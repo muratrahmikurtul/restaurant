@@ -1,0 +1,9 @@
+<h2> Listing all Places infos </h2>
+<% @places.each do |p| %>
+<p> <b>Name : </b><i> <a href="/places/<%=p.id%>"> <%= p.name %> </a></i><br>
+<b>Address : </b><%= p.adress %><br>
+<b>Desc : </b><%= p.description %><br>
+<b>Phone Number : </b><u><%= p.phone_number %></u><br>
+<b>City : </b><%= p.city %></p>
+<hr>
+<% end %>

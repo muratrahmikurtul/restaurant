@@ -1,0 +1,11 @@
+<h3>Showing <%= @place.id %> th Place</h3>
+<p> <b>Name : </b><i> <%= @place.name %> </i><br>
+<b>Address : </b><%= @place.adress %><br>
+<b>Desc : </b><%= @place.description %><br>
+<b>Phone Number : </b><u><%= @place.phone_number %></u><br>
+<b>City : </b><%= @place.city %><br>
+<b>Contact_Mail </b> <%= @place.contact_mail %><br />
+<b>Category:</b> <%= @place.category.name %><br /></p>
+<%= link_to 'Back', places_path %>
+<%= link_to 'Edit', edit_place_path(@place) %>
+<%= link_to  "Delete Place", place_path(@place) , method: :delete%>
