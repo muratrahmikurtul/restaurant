@@ -14,6 +14,11 @@
       <strong>Comment:</strong>
       <%= comment.body %>
     </p>
+    <p>
+    <%= link_to 'Destroy Comment', [comment.place, comment],
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %>
+    </p>
 <% end %>
 
 <h2>Add a comment:</h2>
@@ -30,4 +35,4 @@
 
 <%= link_to 'Back', places_path %>
 <%= link_to 'Edit', edit_place_path(@place) %>
-<%= link_to  "Delete Place", place_path(@place) , method: :delete%>
+<%= link_to  "Delete Place", place_path(@place) , method: :delete, data: { confirm: 'Are you sure?' }%>
