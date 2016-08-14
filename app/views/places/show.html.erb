@@ -5,7 +5,29 @@
 <b>Phone Number : </b><u><%= @place.phone_number %></u><br>
 <b>City : </b><%= @place.city %><br>
 <b>Contact_Mail </b> <%= @place.contact_mail %><br />
-<b>Category:</b> <%= @place.category.name %><br /></p>
+  <b>Category:</b> <%= @place.category.name %><br /></p>
+
+<h2>Comments</h2>
+
+  <% @place.comments.each do |comment| %>
+    <p>
+      <strong>Comment:</strong>
+      <%= comment.body %>
+    </p>
+<% end %>
+
+<h2>Add a comment:</h2>
+<%= form_for([@place, @place.comments.build]) do |f| %>
+    <p>
+      <%= f.label :Comment %><br>
+      <%= f.text_area :body %>
+    </p>
+    <p>
+      <%= f.submit "Yorum Yap" %>
+    </p>
+<% end %>
+
+
 <%= link_to 'Back', places_path %>
 <%= link_to 'Edit', edit_place_path(@place) %>
 <%= link_to  "Delete Place", place_path(@place) , method: :delete%>

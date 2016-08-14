@@ -3,7 +3,6 @@
   <component name="dataSourceStorageLocal">
     <data-source name="Rails reservation: development" uuid="2d4af2e0-9b33-4026-8545-11914cb81df3">
       <user-name>root</user-name>
-      <user-password>dfd8dfc5dfc5dfde</user-password>
     </data-source>
     <data-source name="Rails reservation: production" uuid="79981c0e-6bcc-4315-b302-4281fed05059">
       <user-name>reservation</user-name>

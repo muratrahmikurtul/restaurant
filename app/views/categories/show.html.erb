@@ -1,0 +1,8 @@
+<h1><%= @category.name %></h1>
+
+<% @category.places.each do |place| %>
+    ID: <%= place.id%><br>
+    Title:
+    <%= link_to (place.name), place_path(place) %><br>
+    Desc:<%= place.description%><br>
+<%end%>
