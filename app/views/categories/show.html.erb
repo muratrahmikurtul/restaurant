@@ -1,8 +1,11 @@
 <h1><%= @category.name %></h1>
+<h1>Bu Kategorideki Mekanlar</h1>
 
 <% @category.places.each do |place| %>
     ID: <%= place.id%><br>
     Title:
     <%= link_to (place.name), place_path(place) %><br>
     Desc:<%= place.description%><br>
+    <hr>
 <%end%>
+<%= link_to "Back", categories_path %>
