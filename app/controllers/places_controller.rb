@@ -1,5 +1,8 @@
 class PlacesController < ApplicationController
+	before_action :authenticate_owner!, except: [:show, :index]
 	before_action :set_place, only: [:show, :update, :edit, :destroy]
+	before_action :authorize_owner!, only: [:edit, :update, :destroy]
+
 	def  index
 		@places = Place.all
 	end
@@ -13,7 +16,7 @@ class PlacesController < ApplicationController
 
 	end
 	def create
-		@place = Place.new(place_params)
+		@place = current_owner.places.new(place_params)
 
 		if @place.save
 
@@ -45,6 +48,10 @@ class PlacesController < ApplicationController
 	end
 
 	private
+
+	def authorize_owner!
+		redirect_to root_path, notice: "Not authorized" unless @place.owner_id == current_owner.id
+	end
 
 	def place_params
 		params.require(:place).permit(:name, :adress, :established_at, :phone_number, :contact_mail, :city, :category_id)

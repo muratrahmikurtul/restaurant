@@ -35,5 +35,9 @@
 
 
 <%= link_to 'Back', places_path %>
-<%= link_to 'Edit', edit_place_path(@place) %>
-<%= link_to  "Delete Place", place_path(@place) , method: :delete, data: { confirm: 'Are you sure?' }%>
+<% if current_owner.present? and current_owner.id == @place.owner_id %>
+    <br/>
+    <%= link_to "Edit idea", edit_place_path(@place) %>
+    <br/>
+    <%= link_to "Sil", place_path(@place), method: :delete %>
+<% end %>
