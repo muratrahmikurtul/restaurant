@@ -1,0 +1,15 @@
+<%= form_for [@place, @place.reservasyons.build] do |f| %>
+    <p>
+      <%= f.label :Date %><br>
+      <%= f.date_select :date %>
+    </p>
+    <p>
+      <%= f.label "Kişi Sayısı" %><br>
+     <%=  f.text_field :number_of_people %>
+      </p>
+    <p>
+      <%= f.submit "Reserve Et" %>
+    </p>
+
+
+<% end %>

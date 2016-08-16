@@ -1,7 +1,7 @@
 class PlacesController < ApplicationController
 	before_action :authenticate_owner!, except: [:show, :index]
 	before_action :set_place, only: [:show, :update, :edit, :destroy]
-	before_action :authorize_owner!, only: [:edit, :update, :destroy]
+
 
 	def  index
 		@places = Place.all
@@ -13,8 +13,8 @@ class PlacesController < ApplicationController
 	end
 
 	def show
-
 	end
+
 	def create
 		@place = current_owner.places.new(place_params)
 
@@ -26,12 +26,12 @@ class PlacesController < ApplicationController
 			render :new
 		end
 	end
+
 	def edit
 		load_categories
 	end
 
 	def update
-
 
 		if @place.update(place_params)
 			redirect_to place_path(@place)
@@ -44,7 +44,7 @@ class PlacesController < ApplicationController
 	def destroy
 
 		@place.destroy
-		redirect_to places_path
+		redirect_to places_path , notice: "Place was deleted"
 	end
 
 	private

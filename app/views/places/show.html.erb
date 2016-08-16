@@ -8,17 +8,36 @@
 <b>Contact_Mail </b> <%= @place.contact_mail %><br />
   <b>Category:</b> <%= @place.category.name %><br /></p>
 
+<h1>Reservasyonlar</h1>
+<% @place.reservasyons.each do |r| %>
+    <p>
+      Kişi E-mail :
+      <%= current_customer.email %><br>
+      Tarih :
+      <%= r.date %><br>
+      Kişi Sayısı :
+      <%= r.number_of_people %>
+    </p>
+<% end %>
+
+
+<%= render 'reservasyons/form' %>
+
 <h2>Comments</h2>
 
   <% @place.comments.each do |comment| %>
     <p>
-      <strong>Comment:</strong>
+
       <%= comment.body %>
-    </p>
-    <p>
-    <%= link_to 'Destroy Comment', [comment.place, comment],
+
+     <% if current_customer.present? && current_customer.id == comment.customer.id %>
+
+      <%= link_to 'Destroy Comment', [comment.place, comment],
                 method: :delete,
                 data: { confirm: 'Are you sure?' } %>
+
+
+    <%end%>
     </p>
 <% end %>
 
