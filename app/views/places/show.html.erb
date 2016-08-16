@@ -6,10 +6,17 @@
 <b>Phone Number : </b><u><%= @place.phone_number %></u><br>
 <b>City : </b><%= @place.city %><br>
 <b>Contact_Mail </b> <%= @place.contact_mail %><br />
-  <b>Category:</b> <%= @place.category.name %><br /></p>
+  <b>Category:</b> <%= @place.category.name %><br />
+<b>Foods: </b><%= @place.foods.collect {|x| x.name }%><br />
+  </p>
 
-<h1>Reservasyonlar</h1>
+
+
+
 <% @place.reservasyons.each do |r| %>
+
+    <h1>Reservasyonlar</h1>
+    <% if current_customer.present? && current_customer.id == r.customer.id %>
     <p>
       Kişi E-mail :
       <%= current_customer.email %><br>
@@ -17,11 +24,16 @@
       <%= r.date %><br>
       Kişi Sayısı :
       <%= r.number_of_people %>
+      <%= link_to 'Destroy Reservation', [r.place, r],
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' } %>
     </p>
+    <% end %>
 <% end %>
 
 
 <%= render 'reservasyons/form' %>
+
 
 <h2>Comments</h2>
 

@@ -13,6 +13,7 @@ class PlacesController < ApplicationController
 	end
 
 	def show
+
 	end
 
 	def create
@@ -54,7 +55,7 @@ class PlacesController < ApplicationController
 	end
 
 	def place_params
-		params.require(:place).permit(:name, :adress, :established_at, :phone_number, :contact_mail, :city, :category_id)
+		params.require(:place).permit(:name, :adress, :established_at, :phone_number, :contact_mail, :city, :category_id, food_ids: [])
 	end
 
 	def set_place
@@ -63,5 +64,6 @@ class PlacesController < ApplicationController
 
 	def load_categories
 		@categories = Category.all.collect {|c| [c.name,c.id]}
+		@foods = Food.all
 	end
 end

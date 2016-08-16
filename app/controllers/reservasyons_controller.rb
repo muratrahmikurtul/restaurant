@@ -15,6 +15,9 @@ class ReservasyonsController < ApplicationController
   end
 
   def destroy
+    @reservasyon = @place.reservasyons.find(params[:id])
+    @reservasyon.destroy
+    redirect_to @place
   end
 
   private
