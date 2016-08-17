@@ -1,7 +1,7 @@
 class PlacesController < ApplicationController
 	before_action :authenticate_owner!, except: [:show, :index]
 	before_action :set_place, only: [:show, :update, :edit, :destroy]
-
+	before_action :authorize_owner!, only: [:edit, :update, :destroy]
 
 	def  index
 		@places = Place.all

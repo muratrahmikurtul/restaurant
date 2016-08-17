@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160816151132) do
+ActiveRecord::Schema.define(version: 20160817081708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,11 +58,6 @@ ActiveRecord::Schema.define(version: 20160816151132) do
     t.integer "place_id", null: false
   end
 
-  create_table "ideas_tags", id: false, force: :cascade do |t|
-    t.integer "tag_id",  null: false
-    t.integer "idea_id", null: false
-  end
-
   create_table "owners", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -96,7 +91,7 @@ ActiveRecord::Schema.define(version: 20160816151132) do
   end
 
   create_table "reservasyons", force: :cascade do |t|
-    t.date     "date"
+    t.datetime "date"
     t.integer  "number_of_people"
     t.integer  "customer_id"
     t.integer  "place_id"
