@@ -8,7 +8,15 @@
 <b>Contact_Mail </b> <%= @place.contact_mail %><br />
   <b>Category:</b> <%= @place.category.name %><br />
 <b>Foods: </b><%= @place.foods.collect {|x| x.name }%><br />
+
   </p>
+
+<b>Facebook:</b> <%= @place.social_profile.facebook %><br />
+<b>Twitter:</b> <%= @place.social_profile.twitter %><br />
+<b>Instagram:</b> <%= @place.social_profile.instagram %><br />
+<b>Foursquare:</b> <%= @place.social_profile.foursquare %><br />
+
+
 
 
 
@@ -16,16 +24,17 @@
 <% @place.reservasyons.reject{ |r| r.id.nil? }.each do |r| %>
     <p>
       E-mail:
-      <%= r.customer.email %>
+      <%= r.customer.email %><br>
       Tarih :
       <%= r.date %><br>
       Kişi Sayısı :
       <%= r.number_of_people %>
-
+      <% if current_customer.present? && current_customer.id == r.customer.id %>
       <%= link_to 'Destroy Reservation', [r.place, r],
                   method: :delete,
                   data: { confirm: 'Are you sure?' } %>
     </p>
+      <%end%>
     <% end %>
 
 

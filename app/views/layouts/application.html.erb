@@ -9,6 +9,7 @@
     <% if current_owner.present? %>
         <li><a href="#"><%= current_owner.email %></a></li>
         <li><%= link_to "Logout", destroy_owner_session_path, method: :delete %></li>
+        <li><%= link_to "My Places", mine_places_path %></li>
     <% else %>
         <li><%= link_to "Login as Owner", new_owner_session_path %></li>
         <li><%= link_to "Register as Owner", new_owner_registration_path %></li>

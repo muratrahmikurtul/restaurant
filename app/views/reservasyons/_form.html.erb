@@ -4,7 +4,7 @@
 <%= form_for [@place, @reservasyon] do |f| %>
     <p>
       <%= f.label :Date %><br>
-      <%= f.date_select :date %>
+      <%= f.datetime_select :date %>
     </p>
     <p>
       <%= f.label "Kişi Sayısı" %><br>
@@ -15,4 +15,4 @@
     </p>
 
 
-<% end %>
+<% end %> 
