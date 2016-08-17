@@ -14,6 +14,7 @@
     <%= f.text_field :city, placeholder: 'city'  %><br />
     <%= f.select :category_id, @categories %><br />
     <%= f.collection_check_boxes(:food_ids, @foods, :id, :name) %>
+<<<<<<< HEAD
 
 
 
@@ -32,3 +33,22 @@
     <%= f.submit 'Gonder'%>
 
 <%end%>
+=======
+
+    <%= f.fields_for :social_profile do |sf| %>
+      <h3>Social Profile</h3>
+      <%= sf.label :facebook %>
+      <%= sf.text_field :facebook, placeholder: 'Facebook', class: "form-control input-sm" %><br />
+      <%= sf.label :instagram %>
+      <%= sf.text_field :instagram, placeholder: 'instagram', class: "form-control input-sm" %><br />
+      <%= sf.label :twitter %>
+      <%= sf.text_field :twitter, placeholder: 'twitter', class: "form-control input-sm" %><br />
+      <%= sf.label :foursquare %>
+      <%= sf.text_field :foursquare, placeholder: 'foursquare', class: "form-control input-sm" %><br />
+    <% end %>
+
+    <%= f.submit 'Gonder'%>
+
+
+<%end%>
+>>>>>>> 20921232ff22faeab4e220afb483a4a6b215b9cd

@@ -8,7 +8,6 @@ class PlacesController < ApplicationController
 		@places = current_owner.places
 	end
 
-
 	def  index
 		@places = Place.all
 	end
