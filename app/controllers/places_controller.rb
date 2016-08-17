@@ -9,6 +9,7 @@ class PlacesController < ApplicationController
 
 	def new
 		@place = Place.new
+		@place.build_social_profile
 		load_categories
 	end
 
@@ -61,7 +62,11 @@ class PlacesController < ApplicationController
 	end
 
 	def place_params
-		params.require(:place).permit(:name, :adress, :established_at, :phone_number, :contact_mail, :city, :category_id, food_ids: [])
+		params.require(:place).permit(
+					:name, :adress, :established_at, :phone_number, :contact_mail,
+					:city, :category_id, food_ids: [],
+					social_profile_attributes: [:id, :facebook, :twitter, :instagram, :foursquare]
+					)
 	end
 
 	def set_place

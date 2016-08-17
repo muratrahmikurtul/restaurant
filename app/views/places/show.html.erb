@@ -10,6 +10,12 @@
 <b>Foods: </b><%= @place.foods.collect {|x| x.name }%><br />
   </p>
 
+  <b>Facebook</b> <%= @place.social_profile.facebook %><br />
+
+  <b>Twitter</b> <%= @place.social_profile.twitter %><br />
+
+  <b>Instagram</b> <%= @place.social_profile.instagram %><br />
+
 
 
 <h1>Reservasyonlar</h1>
