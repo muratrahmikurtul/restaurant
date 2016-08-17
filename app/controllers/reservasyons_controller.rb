@@ -10,6 +10,7 @@ class ReservasyonsController < ApplicationController
     @reservasyon.customer = current_customer
 
     if @reservasyon.save
+      ReservMailer.new_reserv(@place).deliver_now
       redirect_to @place, notice: "Reservasyon was saved."
     else
       redirect_to @place, notice: "Reservasyon is not valid."
