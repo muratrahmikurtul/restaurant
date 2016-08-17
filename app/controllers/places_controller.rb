@@ -13,7 +13,13 @@ class PlacesController < ApplicationController
 	end
 
 	def show
-
+		if current_customer
+			if @place.reservasyons.where(customer_id: current_customer.id).any?
+				@reservasyon = @place.reservasyons.where(customer_id: current_customer.id).first
+			else
+				@reservasyon = @place.reservasyons.build
+			end
+		end
 	end
 
 	def create

@@ -1,4 +1,4 @@
-<h3>Showing <%= @place.id %> th Place</h3>
+<h3>Showing <%= @place.name %> </h3>
 <p> <b>Name : </b><i> <%= @place.name %> </i><br>
 <b>Address : </b><%= @place.adress %><br>
 <b>Desc : </b><%= @place.description %><br>
@@ -12,34 +12,34 @@
 
 
 
-
-<% @place.reservasyons.each do |r| %>
-
-    <h1>Reservasyonlar</h1>
-    <% if current_customer.present? && current_customer.id == r.customer.id %>
+<h1>Reservasyonlar</h1>
+<% @place.reservasyons.reject{ |r| r.id.nil? }.each do |r| %>
     <p>
-      Kişi E-mail :
-      <%= current_customer.email %><br>
+      E-mail:
+      <%= r.customer.email %>
       Tarih :
       <%= r.date %><br>
       Kişi Sayısı :
       <%= r.number_of_people %>
+
       <%= link_to 'Destroy Reservation', [r.place, r],
                   method: :delete,
                   data: { confirm: 'Are you sure?' } %>
     </p>
     <% end %>
-<% end %>
 
 
+<% if current_customer.present?%>
 <%= render 'reservasyons/form' %>
-
+<%end%>
 
 <h2>Comments</h2>
 
   <% @place.comments.each do |comment| %>
     <p>
-
+      Commenter:
+      <%= comment.customer.email %><br />
+      Comment:
       <%= comment.body %>
 
      <% if current_customer.present? && current_customer.id == comment.customer.id %>
@@ -52,7 +52,7 @@
     <%end%>
     </p>
 <% end %>
-
+<% if current_customer.present?%>
 <h2>Add a comment:</h2>
 <%= form_for([@place, @place.comments.build]) do |f| %>
     <p>
@@ -63,7 +63,7 @@
       <%= f.submit "Yorum Yap" %>
     </p>
 <% end %>
-
+<%end%>
 
 <%= link_to 'Back', places_path %>
 <% if current_owner.present? and current_owner.id == @place.owner_id %>

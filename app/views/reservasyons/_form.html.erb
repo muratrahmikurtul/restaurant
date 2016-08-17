@@ -1,7 +1,7 @@
 
 <h1>Reservasyon Yap</h1>
 
-<%= form_for [@place, @place.reservasyons.build] do |f| %>
+<%= form_for [@place, @reservasyon] do |f| %>
     <p>
       <%= f.label :Date %><br>
       <%= f.date_select :date %>

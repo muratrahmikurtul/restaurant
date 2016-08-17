@@ -6,6 +6,7 @@ class Place < ApplicationRecord
 	has_many :comments, dependent: :destroy
 	belongs_to :owner
 	has_many :reservasyons
+	has_many :reservci, through: :reservasyons, source: :customer
 	has_and_belongs_to_many :foods
 
 end
