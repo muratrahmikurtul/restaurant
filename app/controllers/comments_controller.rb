@@ -9,7 +9,10 @@ class CommentsController < ApplicationController
     @place = Place.find(params[:place_id])
     @comment = @place.comments.new(comment_params)
     @comment.customer = current_customer
+
     if @comment.save
+    CommentMailer.new_comment(@place).deliver_now
+
     redirect_to place_path(@place)
     end
   end
